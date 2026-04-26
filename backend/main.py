@@ -29,6 +29,7 @@ from routes.classroom_routes import router as classroom_router
 from routes.teacher_routes import router as teacher_router
 from routes.principal_routes import router as principal_router
 from routes.websocket_routes import router as ws_router
+import certifi
 
 
 # ─── Lifespan — DB init and cleanup ─────────────────────────────────────────
@@ -36,7 +37,11 @@ from routes.websocket_routes import router as ws_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    client = AsyncIOMotorClient(settings.mongo_uri)
+    client = AsyncIOMotorClient(
+        settings.mongo_uri, 
+        tlsCAFile=certifi.where(),
+        tlsAllowInvalidCertificates=True
+    )
     await init_beanie(
         database=client[settings.database_name],
         document_models=[User, Alert, Emotion, Attendance],
