@@ -101,6 +101,14 @@ app.include_router(ws_router)   # WebSocket has no prefix
 
 # ─── Health check ────────────────────────────────────────────────────────────
 
+@app.get("/", tags=["Root"])
+async def root():
+    return {
+        "message": "Welcome to AI Classroom Rating System API",
+        "docs": "/docs",
+        "health": "/health"
+    }
+
 @app.get("/health", tags=["Health"])
 async def health():
     return {"status": "ok", "version": "1.0.0", "service": "AI Classroom API"}
