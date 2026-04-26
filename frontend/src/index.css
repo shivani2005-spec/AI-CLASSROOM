@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-surface text-gray-100 font-sans antialiased;
+    background: #0f1117;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #1a1d27; }
+  ::-webkit-scrollbar-thumb { background: #3b63f8; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #608afc; }
+}
+
+@layer components {
+  /* ─── Glass card ───────────────────────────────────── */
+  .glass-card {
+    @apply rounded-2xl border border-white/10 backdrop-blur-md;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-brand-500/40 hover:shadow-glow hover:-translate-y-1;
+  }
+
+  /* ─── Gradient buttons ─────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white
+           bg-brand-gradient shadow-glow transition-all duration-300
+           hover:shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-brand-300
+           border border-brand-500/40 bg-brand-500/10
+           transition-all duration-300 hover:bg-brand-500/20 hover:border-brand-400 active:scale-95;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white
+           bg-danger-gradient transition-all duration-300 hover:scale-105 active:scale-95;
+  }
+
+  /* ─── Input fields ─────────────────────────────────── */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-gray-100
+           placeholder-gray-500 outline-none transition-all duration-300
+           focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 focus:bg-white/8;
+  }
+
+  /* ─── Badge variants ───────────────────────────────── */
+  .badge-red    { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-500/20 text-red-300 border border-red-500/30; }
+  .badge-green  { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30; }
+  .badge-yellow { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-500/20 text-yellow-300 border border-yellow-500/30; }
+  .badge-blue   { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30; }
+
+  /* ─── Section headings ─────────────────────────────── */
+  .section-title {
+    @apply text-2xl font-display font-bold text-white tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply text-sm text-gray-400 mt-1;
+  }
+
+  /* ─── Sidebar link ─────────────────────────────────── */
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-gray-400
+           transition-all duration-200 hover:text-white hover:bg-white/8 cursor-pointer;
+  }
+
+  .nav-link-active {
+    @apply nav-link text-white bg-brand-500/20 border border-brand-500/30 shadow-glow;
+  }
+
+  /* ─── Stat card ────────────────────────────────────── */
+  .stat-card {
+    @apply glass-card p-5 flex flex-col gap-1;
+  }
+
+  /* ─── Alert card ───────────────────────────────────── */
+  .alert-card-critical {
+    @apply glass-card border-red-500/40 p-4 animate-slide-in-right;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-brand-gradient;
+  }
+
+  .text-gradient-danger {
+    background: linear-gradient(135deg, #ef4444, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-mesh {
+    background-image: radial-gradient(at 40% 20%, rgba(59,99,248,0.12) 0px, transparent 50%),
+                      radial-gradient(at 80% 0%, rgba(124,58,237,0.10) 0px, transparent 50%),
+                      radial-gradient(at 0% 50%, rgba(16,185,129,0.06) 0px, transparent 50%);
+  }
+
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+}
