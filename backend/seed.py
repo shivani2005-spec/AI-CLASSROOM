@@ -9,7 +9,6 @@ from beanie import init_beanie
 from models.user_model import User, UserRole
 from auth.password_handler import hash_password
 from config import settings
-import certifi
 
 
 DEMO_USERS = [
@@ -45,11 +44,9 @@ DEMO_USERS = [
 
 
 async def seed():
-    client = AsyncIOMotorClient(
-        settings.mongo_uri, 
-        tlsCAFile=certifi.where(),
-        tlsAllowInvalidCertificates=True
-    )
+    # Simplified connection for better compatibility with Python 3.13 and Atlas
+    client = AsyncIOMotorClient(settings.mongo_uri)
+    
     await init_beanie(
         database=client[settings.database_name],
         document_models=[User],
