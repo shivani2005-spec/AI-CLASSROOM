@@ -8,6 +8,7 @@ Architecture:
   - SlowAPI rate limiting applied globally
 """
 
+import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -23,6 +24,17 @@ from models.user_model import User
 from models.alert_model import Alert
 from models.emotion_model import Emotion
 from models.attendance_model import Attendance
+
+# Configure logging to file
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("server.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
 
 from routes.auth_routes import router as auth_router
 from routes.classroom_routes import router as classroom_router
@@ -43,11 +55,11 @@ async def lifespan(app: FastAPI):
         database=client[settings.database_name],
         document_models=[User, Alert, Emotion, Attendance],
     )
-    print(f"✅ Connected to MongoDB: {settings.database_name}")
+    print(f"[DB] Connected to MongoDB: {settings.database_name}")
     yield
     # Shutdown
     client.close()
-    print("🔌 MongoDB connection closed")
+    print("[DB] MongoDB connection closed")
 
 
 # ─── App initialization ──────────────────────────────────────────────────────
@@ -63,13 +75,14 @@ app = FastAPI(
 app.state.limiter = limiter
 app.add_middleware(SlowAPIMiddleware)
 
-# CORS — allow React dev server
+# CORS — allow React dev server and common local origins
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 
@@ -84,6 +97,7 @@ async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
+    logger.error(f"Global exception: {exc}", exc_info=True)
     return JSONResponse(
         status_code=500,
         content={"detail": "An unexpected server error occurred.", "error": str(exc)},

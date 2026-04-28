@@ -43,6 +43,8 @@ export default {
         "danger-gradient": "linear-gradient(135deg, #ef4444, #dc2626)",
         "success-gradient": "linear-gradient(135deg, #10b981, #059669)",
         "warning-gradient": "linear-gradient(135deg, #f59e0b, #d97706)",
+        "soft-gradient": "linear-gradient(135deg, rgba(59,99,248,0.1), rgba(124,58,237,0.05))",
+        "glass-gradient": "linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
       },
       boxShadow: {
         glass: "0 8px 32px rgba(0,0,0,0.37)",

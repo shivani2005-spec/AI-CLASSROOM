@@ -13,7 +13,13 @@ async def handle_signup(payload: SignUpRequest) -> dict:
 
 
 async def handle_signin(payload: SignInRequest) -> dict:
-    return await signin_user(payload)
+    try:
+        return await signin_user(payload)
+    except Exception as e:
+        print(f"DEBUG ERROR in handle_signin: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        raise e
 
 
 async def handle_refresh(payload: RefreshTokenRequest) -> dict:
