@@ -101,7 +101,7 @@ export default function SignIn() {
           <div className="mt-4 p-3 rounded-xl bg-brand-500/8 border border-brand-500/20">
             <p className="text-xs font-semibold text-brand-300 mb-1.5">Demo Credentials</p>
             <div className="space-y-1 text-xs text-gray-500">
-              <p>Principal: <span className="text-gray-400">principal@school.com / demo1234</span></p>
+              <p>HOD: <span className="text-gray-400">hod@school.com / demo1234</span></p>
               <p>Teacher: <span className="text-gray-400">teacher@school.com / demo1234</span></p>
             </div>
           </div>

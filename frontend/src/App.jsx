@@ -12,7 +12,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
-import PrincipalDashboard from "./pages/PrincipalDashboard";
+import HodDashboard from "./pages/HodDashboard";
 import ClassroomLive from "./pages/ClassroomLive";
 import Analytics from "./pages/Analytics";
 import Notifications from "./pages/Notifications";
@@ -50,11 +50,11 @@ function AppRoutes() {
           }
         />
         <Route
-          path="/principal-dashboard"
+          path="/hod-dashboard"
           element={
             <ProtectedRoute>
-              <RoleBasedRoute allowedRoles={["principal", "admin"]}>
-                <PrincipalDashboard />
+              <RoleBasedRoute allowedRoles={["hod", "admin"]}>
+                <HodDashboard />
               </RoleBasedRoute>
             </ProtectedRoute>
           }
@@ -63,7 +63,7 @@ function AppRoutes() {
           path="/classroom-live"
           element={
             <ProtectedRoute>
-              <RoleBasedRoute allowedRoles={["teacher", "principal", "admin"]}>
+              <RoleBasedRoute allowedRoles={["teacher", "hod", "admin"]}>
                 <ClassroomLive />
               </RoleBasedRoute>
             </ProtectedRoute>

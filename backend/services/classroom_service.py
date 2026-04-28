@@ -213,11 +213,11 @@ async def _analysis_loop(class_id: str):
             # Push to WebSocket subscribers
             await broadcast_alert(_serialize_alert(alert))
 
-            # Email Alert for severe violations
+            # Email Alert for severe violations - Updated to send to HOD instead of mail_from
             if issue_type == IssueType.abusive_language:
                 from config import settings
                 await send_alert_email(
-                    email_to=settings.mail_from,
+                    email_to=settings.hod_email,
                     subject=f"⚠️ CRITICAL: Abusive Language in {class_id}",
                     body=f"Teacher: {session['teacher_name']}<br>Subject: {session['subject']}<br>Detected Word: <b>{abusive_word}</b><br>Confidence: {confidence*100}%"
                 )

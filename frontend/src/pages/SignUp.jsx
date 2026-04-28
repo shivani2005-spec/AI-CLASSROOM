@@ -7,7 +7,7 @@ import { useAuth } from "../context/AuthContext";
 import AnimatedButton from "../components/AnimatedButton";
 import toast from "react-hot-toast";
 
-const ROLES = ["student", "teacher", "principal", "admin"];
+const ROLES = ["student", "teacher", "hod", "admin"];
 const SUBJECTS = ["Mathematics", "Physics", "Chemistry", "Biology", "English", "History", "Geography", "Computer Science"];
 
 export default function SignUp() {
@@ -28,7 +28,7 @@ export default function SignUp() {
       const { data } = await signup(form);
       login(data.user, { access_token: data.access_token, refresh_token: data.refresh_token });
       toast.success(`Account created! Welcome, ${data.user.name}!`);
-      const dashboards = { teacher: "/teacher-dashboard", principal: "/principal-dashboard", admin: "/admin", student: "/dashboard" };
+      const dashboards = { teacher: "/teacher-dashboard", hod: "/hod-dashboard", admin: "/admin", student: "/dashboard" };
       navigate(dashboards[data.user.role] || "/dashboard");
     } catch (err) {
       toast.error(err.response?.data?.detail || "Signup failed. Please try again.");

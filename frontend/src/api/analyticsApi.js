@@ -5,5 +5,5 @@ export const getAnalytics = (teacherId) =>
     params: { teacher_id: teacherId },
   });
 
-export const getPrincipalAnalytics = () =>
-  axiosClient.get("/principal/analytics");
+export const getHodAnalytics = () =>
+  axiosClient.get("/hod/analytics");

@@ -1,5 +1,5 @@
 """
-Principal controller — school-wide views and alert management.
+HOD controller — school-wide views and alert management.
 """
 
 from models.alert_model import Alert
@@ -40,5 +40,5 @@ async def handle_get_performance() -> dict:
     return {"teachers": performance, "total_teachers": len(performance)}
 
 
-async def handle_get_principal_analytics() -> dict:
+async def handle_get_hod_analytics() -> dict:
     return await classroom_service.get_analytics()

@@ -23,8 +23,8 @@ const NAV_ITEMS = {
     { to: "/profile", icon: User, label: "Profile" },
     { to: "/settings", icon: Settings, label: "Settings" },
   ],
-  principal: [
-    { to: "/principal-dashboard", icon: Shield, label: "Command Center" },
+  hod: [
+    { to: "/hod-dashboard", icon: Shield, label: "Command Center" },
     { to: "/classroom-live", icon: Monitor, label: "Live Classrooms" },
     { to: "/analytics", icon: BarChart3, label: "Analytics" },
     { to: "/notifications", icon: Bell, label: "Alerts" },
@@ -33,7 +33,7 @@ const NAV_ITEMS = {
   ],
   admin: [
     { to: "/admin", icon: Users, label: "Admin Panel" },
-    { to: "/principal-dashboard", icon: Shield, label: "Principal View" },
+    { to: "/hod-dashboard", icon: Shield, label: "HOD View" },
     { to: "/analytics", icon: BarChart3, label: "Analytics" },
     { to: "/notifications", icon: Bell, label: "Alerts" },
     { to: "/settings", icon: Settings, label: "Settings" },

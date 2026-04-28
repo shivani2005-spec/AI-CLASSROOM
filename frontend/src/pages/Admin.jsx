@@ -10,7 +10,7 @@ import { getAllTeachers } from "../api/classroomApi";
 import { getInitials } from "../utils/helpers";
 import toast from "react-hot-toast";
 
-const ROLE_BADGE = { teacher: "badge-blue", principal: "badge-green", admin: "badge-red", student: "badge-yellow" };
+const ROLE_BADGE = { teacher: "badge-blue", hod: "badge-green", admin: "badge-red", student: "badge-yellow" };
 
 export default function Admin() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function Admin() {
         { id: "1", name: "Rajesh Sharma", email: "rajesh@school.com", subject: "Mathematics", class_assigned: "204", role: "teacher" },
         { id: "2", name: "Priya Singh", email: "priya@school.com", subject: "Physics", class_assigned: "101", role: "teacher" },
         { id: "3", name: "Anita Patel", email: "anita@school.com", subject: "Chemistry", class_assigned: "102", role: "teacher" },
-        { id: "4", name: "Dr. Mehta", email: "principal@school.com", subject: null, class_assigned: null, role: "principal" },
+        { id: "4", name: "Dr. Mehta", email: "hod@school.com", subject: null, class_assigned: null, role: "hod" },
       ]);
     });
   }, []);
@@ -47,7 +47,7 @@ export default function Admin() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <DashboardCard title="Total Users" value={teachers.length + 10} icon={Users} color="blue" delay={0} />
             <DashboardCard title="Teachers" value={teachers.filter((t) => t.role === "teacher").length} icon={BookOpen} color="green" delay={1} />
-            <DashboardCard title="Principals" value={teachers.filter((t) => t.role === "principal").length} icon={Shield} color="yellow" delay={2} />
+            <DashboardCard title="HODs" value={teachers.filter((t) => t.role === "hod").length} icon={Shield} color="yellow" delay={2} />
             <DashboardCard title="Active Sessions" value={3} icon={Users} color="blue" delay={3} />
           </div>
 

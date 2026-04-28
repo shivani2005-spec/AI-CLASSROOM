@@ -13,7 +13,7 @@ router = APIRouter(tags=["WebSocket"])
 async def alerts_websocket(websocket: WebSocket):
     """
     Persistent WebSocket connection.
-    All connected principal/admin dashboards receive live alert pushes here.
+    All connected HOD/admin dashboards receive live alert pushes here.
     """
     await connect(websocket)
     try:

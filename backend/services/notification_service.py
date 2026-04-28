@@ -1,6 +1,6 @@
 """
 WebSocket notification service — manages subscriber connections
-and broadcasts alerts to all connected principal/admin clients.
+and broadcasts alerts to all connected HOD/admin clients.
 """
 
 from fastapi import WebSocket

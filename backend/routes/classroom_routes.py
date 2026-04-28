@@ -18,7 +18,7 @@ router = APIRouter(prefix="/classroom", tags=["Classroom"])
 @router.post("/start-monitoring")
 async def start_monitoring(
     payload: StartMonitoringRequest,
-    current_user: User = Depends(require_roles(UserRole.teacher, UserRole.admin, UserRole.principal))
+    current_user: User = Depends(require_roles(UserRole.teacher, UserRole.admin, UserRole.hod))
 ):
     """Start AI monitoring for a classroom."""
     return await handle_start_monitoring(payload, current_user)
@@ -27,7 +27,7 @@ async def start_monitoring(
 @router.post("/stop-monitoring/{class_id}")
 async def stop_monitoring(
     class_id: str,
-    current_user: User = Depends(require_roles(UserRole.teacher, UserRole.admin, UserRole.principal))
+    current_user: User = Depends(require_roles(UserRole.teacher, UserRole.admin, UserRole.hod))
 ):
     """Stop monitoring a specific classroom."""
     return await handle_stop_monitoring(class_id)

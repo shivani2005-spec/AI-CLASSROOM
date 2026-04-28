@@ -27,7 +27,7 @@ from models.attendance_model import Attendance
 from routes.auth_routes import router as auth_router
 from routes.classroom_routes import router as classroom_router
 from routes.teacher_routes import router as teacher_router
-from routes.principal_routes import router as principal_router
+from routes.hod_routes import router as hod_router
 from routes.websocket_routes import router as ws_router
 
 
@@ -97,7 +97,7 @@ API_PREFIX = "/api/v1"
 app.include_router(auth_router, prefix=API_PREFIX)
 app.include_router(classroom_router, prefix=API_PREFIX)
 app.include_router(teacher_router, prefix=API_PREFIX)
-app.include_router(principal_router, prefix=API_PREFIX)
+app.include_router(hod_router, prefix=API_PREFIX)
 app.include_router(ws_router)   # WebSocket has no prefix
 
 

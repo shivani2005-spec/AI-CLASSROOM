@@ -10,7 +10,7 @@ import { getInitials } from "../utils/helpers";
 
 const ROLE_LABELS = {
   teacher: { label: "Teacher", color: "badge-blue" },
-  principal: { label: "Principal", color: "badge-green" },
+  hod: { label: "HOD", color: "badge-green" },
   admin: { label: "Admin", color: "badge-red" },
   student: { label: "Student", color: "badge-yellow" },
 };

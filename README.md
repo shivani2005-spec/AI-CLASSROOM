@@ -1,6 +1,6 @@
 # AI Classroom Rating System 🎓
 
-> **Production-grade full-stack AI classroom monitoring system** — detects noise, abusive language, emotions, and sends real-time alerts to the principal dashboard.
+> **Production-grade full-stack AI classroom monitoring system** — detects noise, abusive language, emotions, and sends real-time alerts to the HOD dashboard.
 
 ---
 
@@ -64,7 +64,7 @@ App runs at: http://localhost:5173
 
 | Role       | Email                     | Password  |
 |------------|---------------------------|-----------|
-| Principal  | principal@school.com      | demo1234  |
+| HOD  | hod@school.com      | demo1234  |
 | Teacher    | teacher@school.com        | demo1234  |
 
 Create these via `POST /api/v1/auth/signup` or the Sign Up page.
@@ -90,8 +90,8 @@ The AI engine works in **hybrid mode** by default:
 | GET | `/api/v1/auth/me` | JWT |
 | POST | `/api/v1/classroom/start-monitoring` | Teacher+ |
 | GET | `/api/v1/classroom/analytics` | Any |
-| GET | `/api/v1/principal/live-all-classes` | Principal+ |
-| GET | `/api/v1/principal/performance` | Principal+ |
+| GET | `/api/v1/hod/live-all-classes` | HOD+ |
+| GET | `/api/v1/hod/performance` | HOD+ |
 | WS | `/ws/alerts` | Open |
 
 ---
@@ -105,7 +105,7 @@ The AI engine works in **hybrid mode** by default:
 | `/signup` | Sign Up | Public |
 | `/dashboard` | Student Dashboard | Any |
 | `/teacher-dashboard` | Teacher Dashboard | Teacher |
-| `/principal-dashboard` | Principal Command Center | Principal |
+| `/hod-dashboard` | HOD Command Center | HOD |
 | `/classroom-live` | Live Monitor | Teacher+ |
 | `/analytics` | Analytics | Any |
 | `/notifications` | Alerts Feed | Any |
@@ -135,7 +135,7 @@ The AI engine works in **hybrid mode** by default:
 - ✅ Real-time audio level monitoring (dB meter)
 - ✅ NLP abusive language detection (English + Hindi)
 - ✅ Voice emotion analysis (angry/stressed/happy/neutral/fearful)
-- ✅ Live WebSocket alert push to principal
+- ✅ Live WebSocket alert push to HOD
 - ✅ JWT Auth + Role-Based Access (Student/Teacher/Principal/Admin)
 - ✅ Premium glassmorphism dark UI
 - ✅ GSAP hero animations + Framer Motion route transitions

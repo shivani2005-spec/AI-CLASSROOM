@@ -14,9 +14,9 @@ from config import settings
 DEMO_USERS = [
     {
         "name": "Dr. Arvind Mehta",
-        "email": "principal@school.com",
-        "password": "demo1234",
-        "role": UserRole.principal,
+        "email": "hod@school.com",
+
+        "role": UserRole.hod,
     },
     {
         "name": "Rajesh Sharma",

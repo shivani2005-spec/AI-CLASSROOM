@@ -17,7 +17,7 @@ conf = ConnectionConfig(
 
 async def send_alert_email(email_to: EmailStr, subject: str, body: str):
     """
-    Send an automated alert email to the principal or teacher.
+    Send an automated alert email to the HOD or teacher.
     """
     if not settings.mail_username or settings.mail_username == "your-email@gmail.com":
         print(f" [EMAIL SIMULATION] To: {email_to} | Sub: {subject} | Body: {body}")

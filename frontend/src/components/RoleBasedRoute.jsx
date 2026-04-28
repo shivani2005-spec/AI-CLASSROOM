@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 
 const ROLE_DASHBOARDS = {
   teacher: "/teacher-dashboard",
-  principal: "/principal-dashboard",
+  hod: "/hod-dashboard",
   admin: "/admin",
   student: "/dashboard",
 };

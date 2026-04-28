@@ -56,6 +56,7 @@ class Settings(BaseSettings):
     mail_from: str = os.getenv("MAIL_FROM", "alerts@classroomai.edu")
     mail_port: int = int(os.getenv("MAIL_PORT", 587))
     mail_server: str = os.getenv("MAIL_SERVER", "smtp.gmail.com")
+    hod_email: str = os.getenv("HOD_EMAIL", "hod@school.com")  # Added for HOD email notifications
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
