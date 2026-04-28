@@ -26,7 +26,7 @@ async def get_reports(current_user: User = Depends(require_roles(UserRole.teache
 
 @router.get("/all")
 async def get_all_teachers(
-    current_user: User = Depends(require_roles(UserRole.principal, UserRole.admin))
+    current_user: User = Depends(require_roles(UserRole.hod, UserRole.admin))
 ):
-    """List all teachers — principal and admin only."""
+    """List all teachers — HOD and admin only."""
     return await handle_get_all_teachers()

@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
-import { BarChart3, Bell, TrendingUp, AlertTriangle, BookOpen, Activity } from "lucide-react";
+import { BarChart3, Bell, TrendingUp, AlertTriangle, BookOpen, Activity, Sparkles } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import DashboardCard from "../components/DashboardCard";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import { useNotifications } from "../hooks/useNotifications";
 import { getAnalytics } from "../api/analyticsApi";
 import { SkeletonCard } from "../components/LoadingSkeleton";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
 
 const CHART_STYLE = { background: "transparent", border: "none" };
-const TOOLTIP_STYLE = { background: "#1a1d27", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "10px", color: "#fff" };
+const TOOLTIP_STYLE_LIGHT = { background: "#ffffff", border: "1px solid rgba(0,0,0,0.1)", borderRadius: "10px", color: "#000" };
+const TOOLTIP_STYLE_DARK = { background: "#1a1d27", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "10px", color: "#fff" };
 
 export default function Dashboard() {
   const { user } = useAuth();
+  const { isDark } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [analytics, setAnalytics] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -49,15 +52,20 @@ export default function Dashboard() {
   }, [fetchNotifications]);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-surface">
+    <div className="flex h-screen overflow-hidden bg-white dark:bg-surface">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex-1 flex flex-col overflow-hidden">
         <Navbar unreadCount={unreadCount} onMenuToggle={() => setSidebarOpen((p) => !p)} menuOpen={sidebarOpen} />
-        <main className="flex-1 overflow-y-auto p-5 space-y-6">
+        <main className="flex-1 overflow-y-auto p-6 space-y-8 bg-gradient-to-br from-transparent via-transparent to-brand-50/30 dark:to-transparent">
           {/* Header */}
-          <div>
-            <h1 className="section-title">Welcome back, {user?.name?.split(" ")[0]} 👋</h1>
-            <p className="section-subtitle">Here's an overview of classroom discipline today.</p>
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center shadow-lg">
+              <Sparkles className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h1 className="section-title">Welcome back, {user?.name?.split(" ")[0]}</h1>
+              <p className="section-subtitle">Here's an overview of classroom discipline today.</p>
+            </div>
           </div>
 
           {/* Stat Cards */}
@@ -77,28 +85,28 @@ export default function Dashboard() {
           {/* Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="glass-card p-5">
-              <p className="text-sm font-semibold text-white mb-1">Weekly Discipline Score</p>
-              <p className="text-xs text-gray-500 mb-4">Average score trend over the past week</p>
+              <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">Weekly Discipline Score</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">Average score trend over the past week</p>
               <ResponsiveContainer width="100%" height={200}>
                 <LineChart data={analytics?.weekly_data || []}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                  <XAxis dataKey="day" tick={{ fill: "#6b7280", fontSize: 12 }} />
-                  <YAxis tick={{ fill: "#6b7280", fontSize: 12 }} domain={[50, 100]} />
-                  <Tooltip contentStyle={TOOLTIP_STYLE} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)"} />
+                  <XAxis dataKey="day" tick={{ fill: isDark ? "#6b7280" : "#374151", fontSize: 12 }} />
+                  <YAxis tick={{ fill: isDark ? "#6b7280" : "#374151", fontSize: 12 }} domain={[50, 100]} />
+                  <Tooltip contentStyle={isDark ? TOOLTIP_STYLE_DARK : TOOLTIP_STYLE_LIGHT} />
                   <Line type="monotone" dataKey="discipline" stroke="#3b63f8" strokeWidth={2.5} dot={{ fill: "#3b63f8", r: 4 }} activeDot={{ r: 6 }} />
                 </LineChart>
               </ResponsiveContainer>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="glass-card p-5">
-              <p className="text-sm font-semibold text-white mb-1">Daily Alert Count</p>
-              <p className="text-xs text-gray-500 mb-4">Number of violations flagged per day</p>
+              <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">Daily Alert Count</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">Number of violations flagged per day</p>
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={analytics?.weekly_data || []}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                  <XAxis dataKey="day" tick={{ fill: "#6b7280", fontSize: 12 }} />
-                  <YAxis tick={{ fill: "#6b7280", fontSize: 12 }} />
-                  <Tooltip contentStyle={TOOLTIP_STYLE} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)"} />
+                  <XAxis dataKey="day" tick={{ fill: isDark ? "#6b7280" : "#374151", fontSize: 12 }} />
+                  <YAxis tick={{ fill: isDark ? "#6b7280" : "#374151", fontSize: 12 }} />
+                  <Tooltip contentStyle={isDark ? TOOLTIP_STYLE_DARK : TOOLTIP_STYLE_LIGHT} />
                   <Bar dataKey="alerts" fill="#ef4444" fillOpacity={0.8} radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
@@ -108,21 +116,21 @@ export default function Dashboard() {
           {/* Recent Alerts */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="glass-card p-5">
             <div className="flex items-center justify-between mb-4">
-              <p className="text-sm font-semibold text-white">Recent Alerts</p>
-              <a href="/notifications" className="text-xs text-brand-400 hover:text-brand-300">View all →</a>
+              <p className="text-sm font-semibold text-gray-900 dark:text-white">Recent Alerts</p>
+              <a href="/notifications" className="text-xs text-brand-500 hover:text-brand-600 dark:text-brand-400 dark:hover:text-brand-300">View all →</a>
             </div>
             {notifications.length === 0 ? (
-              <p className="text-sm text-gray-500 text-center py-6">No recent alerts. Classrooms are peaceful! 🎉</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 text-center py-6">No recent alerts. Classrooms are peaceful!</p>
             ) : (
               <div className="space-y-3">
                 {notifications.slice(0, 5).map((n) => (
-                  <div key={n.id} className="flex items-center gap-3 p-3 rounded-xl bg-white/3 hover:bg-white/6 transition-all">
-                    <div className={`w-2 h-2 rounded-full shrink-0 ${n.is_read ? "bg-gray-600" : "bg-red-500 animate-pulse"}`} />
+                  <div key={n.id} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 transition-all">
+                    <div className={`w-2 h-2 rounded-full shrink-0 ${n.is_read ? "bg-gray-500 dark:bg-gray-600" : "bg-red-500 animate-pulse"}`} />
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm text-white truncate">{n.issue_type} — {n.class_id}</p>
-                      <p className="text-xs text-gray-500">{n.teacher_name} · {n.subject}</p>
+                      <p className="text-sm text-gray-900 dark:text-white truncate">{n.issue_type} — {n.class_id}</p>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">{n.teacher_name} · {n.subject}</p>
                     </div>
-                    <span className="text-xs text-gray-500 shrink-0">{Math.round(n.confidence * 100)}%</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-400 shrink-0">{Math.round(n.confidence * 100)}%</span>
                   </div>
                 ))}
               </div>

@@ -14,7 +14,7 @@ const FEATURES = [
   { icon: Mic, title: "Live Audio Analysis", desc: "Real-time decibel monitoring detects noise, silence, and disturbances with 94%+ accuracy.", color: "blue" },
   { icon: Brain, title: "NLP Abuse Detection", desc: "Bilingual English + Hindi toxic language detection with confidence scoring.", color: "red" },
   { icon: Eye, title: "Emotion Recognition", desc: "Voice-based emotion analysis detects anger, stress, happiness across the entire classroom.", color: "yellow" },
-  { icon: Bell, title: "Instant Alerts", desc: "Real-time WebSocket notifications pushed directly to the principal dashboard.", color: "green" },
+  { icon: Bell, title: "Instant Alerts", desc: "Real-time WebSocket notifications pushed directly to the HOD dashboard.", color: "green" },
   { icon: BarChart3, title: "Deep Analytics", desc: "Weekly discipline trends, class rankings, and teacher performance indices.", color: "blue" },
   { icon: Shield, title: "Role-Based Access", desc: "Student, Teacher, Principal, and Admin roles with JWT-secured APIs.", color: "green" },
 ];

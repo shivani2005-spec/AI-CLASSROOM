@@ -8,14 +8,14 @@ import TeacherCard from "../components/TeacherCard";
 import NotificationPanel from "../components/NotificationPanel";
 import { useNotifications } from "../hooks/useNotifications";
 import { useWebSocket } from "../hooks/useWebSocket";
-import { getPrincipalAlerts, getTeacherPerformance, getLiveAllClasses } from "../api/classroomApi";
-import { getPrincipalAnalytics } from "../api/analyticsApi";
+import { getHodAlerts, getTeacherPerformance, getLiveAllClasses } from "../api/classroomApi";
+import { getHodAnalytics } from "../api/analyticsApi";
 import toast from "react-hot-toast";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const TOOLTIP_STYLE = { background: "#1a1d27", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "10px", color: "#fff" };
 
-export default function PrincipalDashboard() {
+export default function HodDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [teachers, setTeachers] = useState([]);
   const [liveClasses, setLiveClasses] = useState([]);
@@ -42,7 +42,7 @@ export default function PrincipalDashboard() {
         const [perfRes, liveRes, analyticsRes] = await Promise.allSettled([
           getTeacherPerformance(),
           getLiveAllClasses(),
-          getPrincipalAnalytics(),
+          getHodAnalytics(),
         ]);
         if (perfRes.status === "fulfilled") setTeachers(perfRes.value.data.teachers || []);
         if (liveRes.status === "fulfilled") setLiveClasses(liveRes.value.data || []);

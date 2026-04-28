@@ -40,7 +40,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className="min-h-screen bg-surface bg-mesh flex items-center justify-center px-4 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-brand-50/30 bg-mesh-light dark:from-surface dark:via-surface dark:to-brand-900/10 dark:bg-mesh flex items-center justify-center px-4 py-16">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -52,18 +52,18 @@ export default function SignIn() {
             <div className="w-10 h-10 rounded-xl bg-brand-gradient flex items-center justify-center shadow-glow">
               <Shield size={20} className="text-white" />
             </div>
-            <span className="font-display font-bold text-xl text-white">ClassroomAI</span>
+            <span className="font-display font-bold text-xl text-gray-900 dark:text-white">ClassroomAI</span>
           </Link>
-          <h1 className="text-3xl font-display font-bold text-white mb-2">Welcome back</h1>
-          <p className="text-gray-400">Sign in to your account to continue</p>
+          <h1 className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-2">Welcome back</h1>
+          <p className="text-gray-600 dark:text-gray-400">Sign in to your account to continue</p>
         </div>
 
         <div className="glass-card p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
               <div className="relative">
-                <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
+                <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
                 <input
                   name="email" type="email" value={form.email} onChange={handleChange}
                   className="input-field pl-10" placeholder="you@school.edu" autoComplete="email"
@@ -72,14 +72,14 @@ export default function SignIn() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
               <div className="relative">
-                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500" />
+                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
                 <input
                   name="password" type={showPass ? "text" : "password"} value={form.password} onChange={handleChange}
                   className="input-field pl-10 pr-10" placeholder="••••••••" autoComplete="current-password"
                 />
-                <button type="button" onClick={() => setShowPass((p) => !p)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">
+                <button type="button" onClick={() => setShowPass((p) => !p)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
                   {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
@@ -90,19 +90,19 @@ export default function SignIn() {
             </AnimatedButton>
           </form>
 
-          <div className="mt-6 pt-5 border-t border-white/8 text-center">
-            <p className="text-sm text-gray-500">
+          <div className="mt-6 pt-5 border-t border-gray-200 dark:border-white/8 text-center">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               Don't have an account?{" "}
-              <Link to="/signup" className="text-brand-400 hover:text-brand-300 font-medium">Sign up</Link>
+              <Link to="/signup" className="text-brand-500 hover:text-brand-600 dark:text-brand-400 dark:hover:text-brand-300 font-medium">Sign up</Link>
             </p>
           </div>
 
           {/* Demo credentials */}
-          <div className="mt-4 p-3 rounded-xl bg-brand-500/8 border border-brand-500/20">
-            <p className="text-xs font-semibold text-brand-300 mb-1.5">Demo Credentials</p>
-            <div className="space-y-1 text-xs text-gray-500">
-              <p>Principal: <span className="text-gray-400">principal@school.com / demo1234</span></p>
-              <p>Teacher: <span className="text-gray-400">teacher@school.com / demo1234</span></p>
+          <div className="mt-4 p-3 rounded-xl bg-brand-50 dark:bg-brand-500/8 border border-brand-200 dark:border-brand-500/20">
+            <p className="text-xs font-semibold text-brand-700 dark:text-brand-300 mb-1.5">Demo Credentials</p>
+            <div className="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+              <p>HOD: <span className="text-gray-500 dark:text-gray-400">hod@school.com / demo1234</span></p>
+              <p>Teacher: <span className="text-gray-500 dark:text-gray-400">teacher@school.com / demo1234</span></p>
             </div>
           </div>
         </div>

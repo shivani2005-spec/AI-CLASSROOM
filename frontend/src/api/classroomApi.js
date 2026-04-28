@@ -22,10 +22,10 @@ export const getTeacherClasses = () => axiosClient.get("/teacher/classes");
 export const getTeacherReports = () => axiosClient.get("/teacher/reports");
 export const getAllTeachers = () => axiosClient.get("/teacher/all");
 
-// Principal APIs
+// HOD APIs
 export const getLiveAllClasses = () =>
-  axiosClient.get("/principal/live-all-classes");
-export const getPrincipalAlerts = (limit = 100) =>
-  axiosClient.get("/principal/alerts", { params: { limit } });
+  axiosClient.get("/hod/live-all-classes");
+export const getHodAlerts = (limit = 100) =>
+  axiosClient.get("/hod/alerts", { params: { limit } });
 export const getTeacherPerformance = () =>
-  axiosClient.get("/principal/performance");
+  axiosClient.get("/hod/performance");

@@ -4,7 +4,7 @@ Password hashing and verification using bcrypt via passlib.
 
 from passlib.context import CryptContext
 
-_pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+_pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
 
 def hash_password(plain_password: str) -> str:

@@ -71,10 +71,10 @@ export default function DashboardCard({
           </div>
         )}
       </div>
-      <div ref={valueRef} className="text-3xl font-display font-bold text-white mb-1">
+      <div ref={valueRef} className="text-3xl font-display font-bold text-gray-900 dark:text-white mb-1">
         {value}{unit}
       </div>
-      <p className="text-sm text-gray-400">{title}</p>
+      <p className="text-sm text-gray-600 dark:text-gray-400">{title}</p>
     </motion.div>
   );
 }

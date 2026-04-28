@@ -4,7 +4,7 @@ export const WS_URL = "ws://localhost:8000/ws/alerts";
 export const ROLES = {
   STUDENT: "student",
   TEACHER: "teacher",
-  PRINCIPAL: "principal",
+  HOD: "hod",
   ADMIN: "admin",
 };
 

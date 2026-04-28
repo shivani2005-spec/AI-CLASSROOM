@@ -12,7 +12,7 @@ from enum import Enum
 class UserRole(str, Enum):
     student = "student"
     teacher = "teacher"
-    principal = "principal"
+    hod = "hod"
     admin = "admin"
 
 
