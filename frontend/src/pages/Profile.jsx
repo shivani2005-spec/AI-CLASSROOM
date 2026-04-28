@@ -10,7 +10,7 @@ import { getInitials } from "../utils/helpers";
 import { useNotifications } from "../hooks/useNotifications";
 import toast from "react-hot-toast";
 
-const SUBJECTS = ["Mathematics","Physics","Chemistry","Biology","English","History","Geography","Computer Science"];
+const SUBJECTS = ["TOC", "CN", "DVA", "CC"];
 
 export default function Profile() {
   const { user, updateUser } = useAuth();

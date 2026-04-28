@@ -8,7 +8,7 @@ import AnimatedButton from "../components/AnimatedButton";
 import toast from "react-hot-toast";
 
 const ROLES = ["student", "teacher", "hod", "admin"];
-const SUBJECTS = ["Mathematics", "Physics", "Chemistry", "Biology", "English", "History", "Geography", "Computer Science"];
+const SUBJECTS = ["TOC", "CN", "DVA", "CC"];
 
 export default function SignUp() {
   const [form, setForm] = useState({ name: "", email: "", password: "", role: "teacher", subject: "", class_assigned: "" });

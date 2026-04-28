@@ -26,10 +26,8 @@ export const EMOTION_COLORS = {
 };
 
 export const DEMO_CLASSES = [
-  { id: "Room 101", teacher: "Priya Sharma", subject: "Physics" },
-  { id: "Room 102", teacher: "Rahul Verma", subject: "Chemistry" },
-  { id: "Room 201", teacher: "Anita Singh", subject: "Biology" },
-  { id: "Room 202", teacher: "Rajesh Kumar", subject: "Mathematics" },
-  { id: "Room 203", teacher: "Sunita Patel", subject: "English" },
-  { id: "Room 204", teacher: "Vijay Gupta", subject: "History" },
+  { id: "Room 301", teacher: "Rajesh Sharma", subject: "TOC" },
+  { id: "Room 302", teacher: "Priya Singh", subject: "CN" },
+  { id: "Room 401", teacher: "Rahul Verma", subject: "DVA" },
+  { id: "Room 402", teacher: "Anita Gupta", subject: "CC" },
 ];

@@ -34,9 +34,9 @@ class User(Document):
         json_schema_extra = {
             "example": {
                 "name": "Rajesh Sharma",
-                "email": "rajesh@school.com",
+                "email": "teacher@school.com",
                 "role": "teacher",
-                "subject": "Mathematics",
-                "class_assigned": "204"
+                "subject": "TOC",
+                "class_assigned": "301"
             }
         }

@@ -50,11 +50,10 @@ export default function HodDashboard() {
       } catch {}
       // demo fallback
       setTeachers((prev) => prev.length ? prev : [
-        { teacher_id: "1", teacher_name: "Rajesh Sharma", subject: "Mathematics", class_assigned: "204", discipline_score: 92, total_alerts: 3, ranking: 1 },
-        { teacher_id: "2", teacher_name: "Priya Singh", subject: "Physics", class_assigned: "101", discipline_score: 85, total_alerts: 7, ranking: 2 },
-        { teacher_id: "3", teacher_name: "Anita Patel", subject: "Chemistry", class_assigned: "102", discipline_score: 78, total_alerts: 12, ranking: 3 },
-        { teacher_id: "4", teacher_name: "Vijay Kumar", subject: "Biology", class_assigned: "201", discipline_score: 71, total_alerts: 18, ranking: 4 },
-        { teacher_id: "5", teacher_name: "Sunita Verma", subject: "English", class_assigned: "202", discipline_score: 65, total_alerts: 23, ranking: 5 },
+        { teacher_id: "1", teacher_name: "Rajesh Sharma", subject: "TOC", class_assigned: "301", discipline_score: 92, total_alerts: 3, ranking: 1 },
+        { teacher_id: "2", teacher_name: "Priya Singh", subject: "CN", class_assigned: "302", discipline_score: 85, total_alerts: 7, ranking: 2 },
+        { teacher_id: "3", teacher_name: "Rahul Verma", subject: "DVA", class_assigned: "401", discipline_score: 78, total_alerts: 12, ranking: 3 },
+        { teacher_id: "4", teacher_name: "Anita Gupta", subject: "CC", class_assigned: "402", discipline_score: 71, total_alerts: 18, ranking: 4 },
       ]);
       setAnalytics((prev) => prev || {
         total_alerts: 63, abusive_incidents: 14, noise_incidents: 31, avg_discipline_score: 78.2,
@@ -63,8 +62,8 @@ export default function HodDashboard() {
           { day: "Thu", alerts: 9 }, { day: "Fri", alerts: 13 }, { day: "Sat", alerts: 10 },
         ],
         class_rankings: [
-          { class_id: "Room 204", discipline_score: 92 }, { class_id: "Room 101", discipline_score: 85 },
-          { class_id: "Room 102", discipline_score: 78 }, { class_id: "Room 201", discipline_score: 71 },
+          { class_id: "Room 301", discipline_score: 92 }, { class_id: "Room 302", discipline_score: 85 },
+          { class_id: "Room 401", discipline_score: 78 }, { class_id: "Room 402", discipline_score: 71 },
         ],
       });
     };

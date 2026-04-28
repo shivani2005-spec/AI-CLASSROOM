@@ -20,10 +20,11 @@ export default function Admin() {
   useEffect(() => {
     getAllTeachers().then(({ data }) => setTeachers(Array.isArray(data) ? data : [])).catch(() => {
       setTeachers([
-        { id: "1", name: "Rajesh Sharma", email: "rajesh@school.com", subject: "Mathematics", class_assigned: "204", role: "teacher" },
-        { id: "2", name: "Priya Singh", email: "priya@school.com", subject: "Physics", class_assigned: "101", role: "teacher" },
-        { id: "3", name: "Anita Patel", email: "anita@school.com", subject: "Chemistry", class_assigned: "102", role: "teacher" },
-        { id: "4", name: "Dr. Mehta", email: "hod@school.com", subject: null, class_assigned: null, role: "hod" },
+        { id: "1", name: "Rajesh Sharma", email: "teacher@school.com", subject: "TOC", class_assigned: "301", role: "teacher" },
+        { id: "2", name: "Priya Singh", email: "priya@school.com", subject: "CN", class_assigned: "302", role: "teacher" },
+        { id: "3", name: "Rahul Verma", email: "rahul@school.com", subject: "DVA", class_assigned: "401", role: "teacher" },
+        { id: "4", name: "Anita Gupta", email: "anita@school.com", subject: "CC", class_assigned: "402", role: "teacher" },
+        { id: "5", name: "Dr. Mehta", email: "hod@school.com", subject: null, class_assigned: null, role: "hod" },
       ]);
     });
   }, []);
